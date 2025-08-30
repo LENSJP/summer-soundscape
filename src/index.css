@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Remove default browser margins/padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('/background.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Custom slider styles */
+.custom-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: black;
+  height: 1px;
+}
+
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: black;
+  cursor: pointer;
+  border: none;
+}
+
+.custom-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: black;
+  cursor: pointer;
+  border: none;
+}
+
+.custom-slider:disabled::-webkit-slider-thumb {
+  background: #9ca3af;
+}
+
+.custom-slider:disabled::-moz-range-thumb {
+  background: #9ca3af;
+}
+
+.custom-slider::-webkit-slider-track {
+  background: black;
+  height: 2px;
+}
+
+.custom-slider::-moz-range-track {
+  background: black;
+  height: 2px;
+  border: none;
+}
+
+/* Grid spacing for sound controls */
+.sound-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 8rem;
+  row-gap: 2rem;
+}
+
+/* Logo positioning */
+.logo-position {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 10;
+}
+
+/* Sound controls spacing */
+.sound-controls {
+  width: 80%;
+  margin: 0 auto 2rem auto;
+  padding: 2rem;
+}
+
+/* Sound name and button spacing */
+.sound-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Top right buttons */
+.top-right-buttons {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 10;
+  display: flex;
+  gap: 1rem;
+}
