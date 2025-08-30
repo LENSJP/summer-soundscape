@@ -4,6 +4,7 @@ import { MultiAudioManager } from './audio/MultiAudioManager';
 import { SUMMER_SOUNDS } from './config/sounds';
 import type { Volume, SoundId } from './types';
 import { createVolume, createSoundId } from './types';
+import { ChevronRight } from 'lucide-solid';
 // Simple SVG icons to avoid import issues
 const PlayIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -158,7 +159,7 @@ const App: Component = () => {
                           ? 'text-green-600'
                           : 'text-gray-600 hover:text-gray-800'
                       } disabled:opacity-50 disabled:cursor-not-allowed`}
-                      style="background: none;"
+                      style="background: none; -webkit-appearance: none; color: inherit;"
                     >
                       {sound()?.isPlaying ? <PauseIcon /> : <PlayIcon />}
                     </button>
@@ -215,7 +216,7 @@ const App: Component = () => {
         >
           <div 
             class="bg-white p-6 relative"
-            style="background: white; padding: 24px; border-radius: 8px; width: 800px; height: 500px; overflow-y: auto; margin: 16px; position: relative;"
+            style="background: white; padding: 24px; border-radius: 8px; width: 800px; height: 500px; overflow-y: auto; margin: 16px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;"
           >
             <button 
               onClick={() => setShowHowToUse(false)}
@@ -224,8 +225,8 @@ const App: Component = () => {
             >
               ×
             </button>
-            <h2 class="text-lg font-bold mb-4" style="font-size: 18px; font-weight: bold; margin-bottom: 16px; text-align: center;">使い方</h2>
-            <div class="text-sm text-gray-700 space-y-2" style="font-size: 14px; color: #374151; text-align: center;">
+            <h2 class="text-lg font-bold mb-4" style="font-size: 18px; font-weight: bold; margin-bottom: 24px; text-align: center;">使い方</h2>
+            <div class="text-sm text-gray-700 space-y-2" style="font-size: 14px; color: #374151; text-align: center; margin-bottom: 32px;">
               <ol style="list-style: none; padding: 0;">
                 <li>8つの夏の音を聴きながら、音の中に存在する夏を思い浮かべる</li>
                 <li>カルーセルを調整して音を組み合わせ、自分の記憶に残る夏の音を作る</li>
@@ -243,7 +244,7 @@ const App: Component = () => {
         >
           <div 
             class="bg-white p-6 relative"
-            style="background: white; padding: 24px; border-radius: 8px; width: 800px; height: 500px; overflow-y: auto; margin: 16px; position: relative;"
+            style="background: white; padding: 24px; border-radius: 8px; width: 800px; height: 500px; overflow-y: auto; margin: 16px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;"
           >
             <button 
               onClick={() => setShowRestart(false)}
@@ -252,31 +253,37 @@ const App: Component = () => {
             >
               ×
             </button>
-            <h2 class="text-lg font-bold mb-4" style="font-size: 18px; font-weight: bold; margin-bottom: 16px; text-align: center;">はじめから</h2>
-            <div class="text-sm text-gray-700 space-y-2" style="font-size: 14px; color: #374151; text-align: center;">
+            <h2 class="text-lg font-bold mb-4" style="font-size: 18px; font-weight: bold; margin-bottom: 24px; text-align: center;">はじめから</h2>
+            <div class="text-sm text-gray-700 space-y-2" style="font-size: 14px; color: #374151; text-align: center; margin-bottom: 32px;">
               <p>これまでのデータを全て削除し、初めから作り直しますか？</p>
             </div>
-            <button 
-              onClick={() => {
-                // Reset all sounds
-                SUMMER_SOUNDS.forEach(config => {
-                  audioManager.stop(createSoundId(config.id));
-                  soundscapeActions.setSoundPlayback(config.id, false);
-                  soundscapeActions.setSoundVolume(config.id, createVolume(50));
-                  audioManager.setVolume(createSoundId(config.id), createVolume(50));
-                });
-                setShowRestart(false);
-              }}
-              class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-            >
-              はじめから作り直す
-            </button>
-            <button 
-              onClick={() => setShowRestart(false)}
-              class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
-            >
-              キャンセルする
-            </button>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+              <button 
+                onClick={() => {
+                  // Reset all sounds
+                  SUMMER_SOUNDS.forEach(config => {
+                    audioManager.stop(createSoundId(config.id));
+                    soundscapeActions.setSoundPlayback(config.id, false);
+                    soundscapeActions.setSoundVolume(config.id, createVolume(50));
+                    audioManager.setVolume(createSoundId(config.id), createVolume(50));
+                  });
+                  setShowRestart(false);
+                }}
+                style="width: 350px; height: 40px; flex-shrink: 0; border-radius: 50px; border: 1px solid #000; font-family: serif; background: none; color: #000; display: flex; align-items: center; justify-content: center; gap: 8px;"
+                class="hover:bg-gray-100"
+              >
+                はじめから作り直す
+                <ChevronRight size={16} />
+              </button>
+              <button 
+                onClick={() => setShowRestart(false)}
+                style="width: 350px; height: 40px; flex-shrink: 0; border-radius: 50px; border: 1px solid #000; font-family: serif; background: none; color: #000; display: flex; align-items: center; justify-content: center; gap: 8px;"
+                class="hover:bg-gray-100"
+              >
+                キャンセルする
+                <ChevronRight size={16} />
+              </button>
+            </div>
           </div>
         </div>
       )}
