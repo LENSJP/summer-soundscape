@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
+    "deploy": "pnpm build && gh-pages -d dist",
     "format": "biome format --write .",
     "format:check": "biome format --check .",
     "lint": "eslint src --ext .ts,.tsx",
