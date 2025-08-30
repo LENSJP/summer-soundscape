@@ -57,8 +57,8 @@ export const createSoundId = (id: string): SoundId => {
 };
 
 export const createSoundPath = (filename: string): SoundPath => {
-  return `/sounds/${filename}.mp3` as SoundPath;
-};
+  return `./sounds/${filename}.mp3` as SoundPath;
+};;
 
 // Component props types
 export interface VolumeSliderProps {

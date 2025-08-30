@@ -103,12 +103,12 @@ const App: Component = () => {
       {/* Fixed background */}
       <div 
         class="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10"
-        style="background-image: url('/background.webp')"
+        style="background-image: url('./background.webp')"
       ></div>
       
       {/* Logo at top left */}
       <div class="logo-position">
-        <img src="/logo.svg" alt="夏の存在証明" class="h-8" />
+        <img src="./logo.svg" alt="夏の存在証明" class="h-8" />
       </div>
 
       {/* Top right buttons */}
